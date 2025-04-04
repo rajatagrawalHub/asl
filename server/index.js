@@ -21,11 +21,11 @@ app.get('/api/search/reg', (req, res) => {
     return res.status(400).json({ message: 'Query parameter "q" is required' });
   }
 
-  const matched = awardData.find(item =>
+  const matched = awardData.filter(item =>
     item["REG NO"] && item["REG NO"].toLowerCase().replace(/\s+/g, '') === query
   );
 
-  return matched.lengths>0 ? res.json(matched) : res.status(404).json({ message: 'Not found' });
+  return matched.length>0 ? res.json(matched) : res.status(404).json({ message: 'Not found' });
 });
 
 app.get('/api/search/name', (req, res) => {
