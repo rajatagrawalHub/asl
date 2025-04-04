@@ -25,7 +25,7 @@ app.get('/api/search/reg', (req, res) => {
     item["REG NO"] && item["REG NO"].toLowerCase().replace(/\s+/g, '') === query
   );
 
-  return matched ? res.json(matched) : res.status(404).json({ message: 'Not found' });
+  return matched.lengths>0 ? res.json(matched) : res.status(404).json({ message: 'Not found' });
 });
 
 app.get('/api/search/name', (req, res) => {
